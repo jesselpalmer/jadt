@@ -1,0 +1,54 @@
+{
+  "name": "jadt",
+  "version": "0.0.1",
+  "description": "JavaScript Abstract Data Types",
+  "main": "./lib/index.js",
+  "scripts": {
+    "build": "npm run clean && ./node_modules/.bin/babel ./src --out-dir ./lib",
+    "build:watch": "./node_modules/.bin/babel ./src --watch --out-dir ./lib",
+    "clean": "rm -rf ./lib",
+    "lint": "./node_modules/.bin/eslint ./src",
+    "lint:fix": "./node_modules/.bin/eslint --fix ./src",
+    "test": "./node_modules/.bin/jest",
+    "test:unit": "./node_modules/.bin/jest",
+    "test:unit:watch": "./node_modules/.bin/jest --watchAll",
+    "test:unit:lib": "./node_modules/.bin/jest './test/lib.test.js'",
+    "test:unit:lib:watch": "./node_modules/.bin/jest './test/lib.test.js' --watchAll",
+    "test:unit:src": "./node_modules/.bin/jest './src'",
+    "test:unit:src:watch": "./node_modules/.bin/jest './src' --watchAll"
+  },
+  "repository": "https://github.com/jesselpalmer/jadt.js",
+  "engines": {
+    "node": ">=4.2.4"
+  },
+  "keywords": [
+    "Collections",
+    "Queue",
+    "Stack",
+    "Data Types",
+    "Abstract Data Types",
+    "Data Structures"
+  ],
+  "author": "Jesse Palmer <jesselpalmer@gmail.com> (https://jesselpalmer.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jesselpalmer/jadt/issues"
+  },
+  "homepage": "https://github.com/jesselpalmer/jadt/#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.17.10",
+    "@babel/eslint-parser": "^7.17.0",
+    "@babel/preset-env": "^7.9.0",
+    "chai": "^4.2.0",
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "jest": "^28.1.0",
+    "jsdoc": "^3.6.2"
+  },
+  "private": false,
+  "funding": {
+    "type" : "github",
+    "url" : "https://github.com/sponsors/jesselpalmer"
+  }
+}
