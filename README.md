@@ -4,6 +4,10 @@ JavaScript Abstract Data Types
 
 ## Installation
 
+  ```
+  npm i jadt
+  ```
+
 ## Tests
 
   ```
