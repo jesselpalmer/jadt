@@ -1,4 +1,4 @@
-import {SinglyLinkedList} from '../../../lib/data-structures';
+import {SinglyLinkedList} from '../../src/singly-linked-list';
 
 export default class Bag {
   #elements = new SinglyLinkedList();

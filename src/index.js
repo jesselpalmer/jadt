@@ -1,3 +1,4 @@
-import {Queue, SinglyLinkedList, Stack} from './data-structures';
+import Queue from './queue';
+import Stack from './stack';
 
-export {Queue, SinglyLinkedList, Stack};
+export {Queue, Stack};
