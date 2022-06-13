@@ -1,4 +1,4 @@
-# JADT
+# jadt
 
 JavaScript Abstract Data Types
 
