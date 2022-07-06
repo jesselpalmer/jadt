@@ -51,6 +51,7 @@
     "type" : "github",
     "url" : "https://github.com/sponsors/jesselpalmer"
   },
+  "type": "module",
   "publishConfig": {
     "registry":"https://npm.pkg.github.com"
   }
