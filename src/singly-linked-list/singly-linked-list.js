@@ -32,8 +32,6 @@ export default class SinglyLinkedList {
    *
    * @param {value} any - any value to be appended to the end of the
    * singly linked list.
-   *
-   * @return none
    */
   add(value) {
     if (this.isEmpty()) {
@@ -182,6 +180,8 @@ export default class SinglyLinkedList {
    * ----------
    * Print out the contents of the singly linked list to the console. Good to
    * use for debugging.
+   *
+   * @return {string} - the array in string format.
    */
   toString() {
     const array = [];
