@@ -164,6 +164,27 @@ export default class SinglyLinkedList {
     return currentNode.value;
   }
 
+  removeLast() {
+    if (this.isEmpty()) return null;
+
+    if (this.size() === 1) {
+      const lastValue = this.getLast();
+      this.clear();
+      return lastValue;
+    }
+
+    let currentNode = this.#head;
+
+    while (currentNode.next.next) {
+      currentNode = currentNode.next;
+    }
+
+    this.#tail = currentNode;
+    this.#size--;
+
+    return currentNode.next.value;
+  }
+
   /**
    * size()
    * ------
