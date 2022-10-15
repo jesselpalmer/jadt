@@ -135,7 +135,7 @@ describe('Singly Linked List tests', () => {
   });
 
   describe('removeLast() tests', () => {
-    it('should return the last element', () => {
+    it('should remove and return last element', () => {
       const singlyLinkedList = new SinglyLinkedList();
 
       singlyLinkedList.add(500000000);
@@ -147,7 +147,7 @@ describe('Singly Linked List tests', () => {
       expect(singlyLinkedList.size()).to.be.equal(2);
     });
 
-    it('should return the last element when only two elements', () => {
+    it('should remove and return last element when only two elements', () => {
       const singlyLinkedList = new SinglyLinkedList();
 
       singlyLinkedList.add(500000000);
@@ -158,7 +158,7 @@ describe('Singly Linked List tests', () => {
       expect(singlyLinkedList.size()).to.be.equal(1);
     });
 
-    it('should return the last element when only one element', () => {
+    it('should remove and return last element when only one element', () => {
       const singlyLinkedList = new SinglyLinkedList();
 
       singlyLinkedList.add(500000000);
