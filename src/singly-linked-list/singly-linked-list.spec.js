@@ -134,6 +134,41 @@ describe('Singly Linked List tests', () => {
     });
   });
 
+  describe('removeLast() tests', () => {
+    it('should return the last element', () => {
+      const singlyLinkedList = new SinglyLinkedList();
+
+      singlyLinkedList.add(500000000);
+      singlyLinkedList.add(23234234);
+      singlyLinkedList.add(false);
+
+      expect(singlyLinkedList.removeLast()).to.be.equal(false);
+      expect(singlyLinkedList.getLast()).to.be.equal(23234234);
+      expect(singlyLinkedList.size()).to.be.equal(2);
+    });
+
+    it('should return the last element when only two elements', () => {
+      const singlyLinkedList = new SinglyLinkedList();
+
+      singlyLinkedList.add(500000000);
+      singlyLinkedList.add(23234234);
+
+      expect(singlyLinkedList.removeLast()).to.be.equal(23234234);
+      expect(singlyLinkedList.getLast()).to.be.equal(500000000);
+      expect(singlyLinkedList.size()).to.be.equal(1);
+    });
+
+    it('should return the last element when only one element', () => {
+      const singlyLinkedList = new SinglyLinkedList();
+
+      singlyLinkedList.add(500000000);
+
+      expect(singlyLinkedList.removeLast()).to.be.equal(500000000);
+      expect(singlyLinkedList.getLast()).to.be.equal(null);
+      expect(singlyLinkedList.size()).to.be.equal(0);
+    });
+  });
+
   describe('size() tests', () => {
     it('should return the correct size', () => {
       const singlyLinkedList = new SinglyLinkedList();
