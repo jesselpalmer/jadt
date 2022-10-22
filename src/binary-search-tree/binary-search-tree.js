@@ -15,17 +15,17 @@ export default class BinarySearchTree {
     if (node.value > newNode.value) {
       if (node.left === null) {
         node.left = newNode;
+      } else {
+        this._insert(node.left, newNode);
       }
-
-      this._insert(node.left, newNode);
     }
 
     if (node.value < newNode.value) {
       if (node.right === null) {
         node.right = newNode;
+      } else {
+        this._insert(node.right, newNode);
       }
-
-      this._insert(node.right, newNode);
     }
   }
 
