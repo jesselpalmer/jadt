@@ -8,16 +8,16 @@ export default class BinarySearchTree {
 
   insert(value) {
     const node = new BinarySearchTreeNode(value);
-    this._appendNode(this.root, node);
+    this._insert(this.root, node);
   }
 
-  _appendNode(node, newNode) {
+  _insert(node, newNode) {
     if (node.value > newNode.value) {
       if (node.left === null) {
         node.left = newNode;
       }
 
-      this._appendNode(node.left, newNode);
+      this._insert(node.left, newNode);
     }
 
     if (node.value < newNode.value) {
@@ -25,7 +25,7 @@ export default class BinarySearchTree {
         node.right = newNode;
       }
 
-      this._appendNode(node.right, newNode);
+      this._insert(node.right, newNode);
     }
   }
 
