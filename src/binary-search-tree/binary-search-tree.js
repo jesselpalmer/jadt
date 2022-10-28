@@ -1,14 +1,14 @@
-import BinarySearchTreeNode from './binary-search-tree-node';
-
 export default class BinarySearchTree {
-  constructor(value) {
-    const node = new BinarySearchTreeNode(value);
-    this.root = node;
+  constructor(node) {
+    this.root = null;
   }
 
-  insert(value) {
-    const node = new BinarySearchTreeNode(value);
-    this._insert(this.root, node);
+  insert(node) {
+    if (!this.root) {
+      this.root = node;
+    } else {
+      this._insert(this.root, node);
+    }
   }
 
   _insert(node, newNode) {
