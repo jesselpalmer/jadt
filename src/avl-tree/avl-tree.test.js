@@ -15,6 +15,7 @@ describe('AVLTree tests', () => {
       const newNode = new AVLTreeNode(5);
 
       avlTree.insert(newNode);
+
       expect(avlTree.contains(5)).toBe(true);
     });
   });
