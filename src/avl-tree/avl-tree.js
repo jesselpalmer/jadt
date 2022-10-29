@@ -20,6 +20,40 @@ export default class AVLTree extends BinarySearchTree {
     return leftHeight - rightHeight;
   }
 
+  _setChild(parent, whichChild, child) {
+    if (whichChild !== 'left' && whichChild !== 'right') {
+      return false;
+    }
+
+    if (whichChild === 'left') {
+      parent.left = child;
+    }
+
+    if (whichChild === 'right') {
+      parent.right = child;
+    }
+
+    if (child !== null) {
+      child.parent = parent;
+    }
+
+    this._updateHeight(child);
+
+    return true;
+  }
+
+  replaceChild(parent, currentChild, newNode) {
+    if (parent.left === currentChild) {
+      return this._setChild(parent, 'left', newNode);
+    }
+
+    if (parent.right === currentChild) {
+      return this._setChild(parent, 'right', newNode);
+    }
+
+    return true;
+  }
+
   _updateHeight(node) {
     let leftHeight = -1;
 
