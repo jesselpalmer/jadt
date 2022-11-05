@@ -42,7 +42,7 @@ export default class AVLTree extends BinarySearchTree {
     return true;
   }
 
-  replaceChild(parent, currentChild, newNode) {
+  _replaceChild(parent, currentChild, newNode) {
     if (parent.left === currentChild) {
       return this._setChild(parent, 'left', newNode);
     }
