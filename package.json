@@ -44,7 +44,7 @@
     "eslint": "^8.15.0",
     "eslint-config-google": "^0.14.0",
     "jest": "^29.2.0",
-    "jsdoc": "^3.6.2"
+    "jsdoc": "^4.0.0"
   },
   "private": false,
   "funding": {
