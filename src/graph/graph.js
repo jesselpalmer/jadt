@@ -11,6 +11,12 @@ export default class Graph {
     }
   }
 
+  isAdjacent(terminatingVertex, startingVertex) {
+    const startingVertexAdjacentSet = this.#vertices.get(startingVertex);
+
+    return startingVertexAdjacentSet.has(terminatingVertex);
+  }
+
   addEdge(vertex1, vertex2) {
     const adjacentVertices = this.#vertices[vertex1];
     adjacentVertices.add(vertex2);
