@@ -1,27 +1,33 @@
-import { expect } from 'chai';
 import Graph from './graph';
-import Vertex from './vertex';
 
 describe('Graph tests', () => {
   describe('smoke test', () => {
     test('should create an instance', () => {
       const graph = new Graph();
-      expect(graph).not.to.equal(null);
+
+      expect(graph).not.toBe(null);
     });
   });
 
-  describe('smoke test', () => {
-    test('should add vertex', () => {
+  describe('contains tests', () => {
+    test('should be true if graph contains vertex', () => {
       const graph = new Graph();
-      const oak = new Vertex('OAK');
-      const sjc = new Vertex('SJC');
-      graph.add(oak);
-      graph.add(sjc);
-      const sfo = new Vertex('SFO');
-      sfo.addEdge(oak);
-      sfo.addEdge(sjc);
-      graph.add(sfo);
-      expect(graph.contains(sfo)).to.equal(true);
+      const adjacentVertices = new Set(['OAK', 'SJC']);
+
+      graph.add('SFO', adjacentVertices);
+      graph.add('PHI');
+
+      expect(graph.contains('SFO')).toBe(true);
+    });
+
+    test('should be false if graph does not contain vertex', () => {
+      const graph = new Graph();
+      const adjacentVertices = new Set(['OAK', 'SJC']);
+
+      graph.add('SFO', adjacentVertices);
+      graph.add('CHI');
+
+      expect(graph.contains('DAL')).toBe(false);
     });
   });
 });
