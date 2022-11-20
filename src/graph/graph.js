@@ -1,7 +1,7 @@
 export default class Graph {
   #vertices = new Map();
 
-  insertVertex(vertex) {
+  add(vertex) {
     this.#vertices.set(vertex);
   }
 
@@ -9,5 +9,9 @@ export default class Graph {
     for (const [key, value] of this.#vertices) {
       console.log(key, value);
     }
+  }
+
+  contains(vertex) {
+    return this.#vertices.has(vertex);
   }
 }

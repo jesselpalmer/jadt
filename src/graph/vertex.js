@@ -4,7 +4,7 @@ export default class Vertex {
     this.adjacentVertices = adjacentVertices;
   }
 
-  addEdge(vertexValue) {
-    this.adjacentVertices.add(vertexValue);
+  addEdge(vertex) {
+    this.adjacentVertices.add(vertex);
   }
 }
