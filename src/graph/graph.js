@@ -17,6 +17,26 @@ export default class Graph {
     return startingVertexAdjacentSet.has(terminatingVertex);
   }
 
+  /**
+   * isCycle
+   * -------
+   * todo: need to implement.
+   * @returns boolean
+   */
+  isCycle() {
+    return null;
+  }
+
+  /**
+   * isAcycle
+   * -------
+   * todo: need to implement.
+   * @returns boolean
+   */
+   isAcycle() {
+    return null;
+  }
+
   addEdge(vertex1, vertex2) {
     const adjacentVertices = this.#vertices[vertex1];
     adjacentVertices.add(vertex2);
