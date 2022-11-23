@@ -1,4 +1,5 @@
 import {performance} from 'perf_hooks';
+
 import {SinglyLinkedList} from '../src/singly-linked-list/index.js';
 
 function addFrontLinkedListTest() {
