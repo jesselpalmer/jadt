@@ -15,10 +15,10 @@ function addFrontLinkedListTest() {
   const elapsedTime = endTime - startTime;
 
   console.log(`${list.size()} elements added to the front of the linkedlist ` +
-      `using addToFront() in ${elapsedTime} milliseconds`);
+      `using addToFront() in ${elapsedTime} ms`);
 }
 
-async function pushArrayTest() {
+function pushArrayTest() {
   const startTime = performance.now();
   const array = [];
 
@@ -30,7 +30,7 @@ async function pushArrayTest() {
   const elapsedTime = endTime - startTime;
 
   console.log(`${array.length} elements added to the front of the array ` +
-      `using unshift() in ${elapsedTime} milliseconds`);
+      `using unshift() in ${elapsedTime} ms`);
 }
 
 function addToFrontTests() {
