@@ -11,7 +11,6 @@ function addFrontLinkedListTest() {
   }
 
   const endTime = performance.now();
-
   const elapsedTime = endTime - startTime;
 
   console.log(`${list.size()} elements added to the front of the linkedlist ` +
