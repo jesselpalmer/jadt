@@ -1,14 +1,6 @@
 import Graph from './graph';
 
 describe('Graph tests', () => {
-  describe('smoke test', () => {
-    test('should create an instance', () => {
-      const graph = new Graph();
-
-      expect(graph).not.toBe(null);
-    });
-  });
-
   describe('addEdge tests', () => {
     test('should be true if vertex is adjacent after edge is added', () => {
       const graph = new Graph();
@@ -53,6 +45,23 @@ describe('Graph tests', () => {
       graph.addVertex('CHI');
 
       expect(graph.contains('DAL')).toBe(false);
+    });
+  });
+
+  describe('size tests', () => {
+    test('should return the correct size', () => {
+      const graph = new Graph();
+
+      graph.addVertex('John');
+      graph.addVertex('Betty');
+      graph.addVertex('Paul');
+      graph.addEdge('Will', 'Betty');
+      graph.addEdge('Cindy', 'Betty');
+      graph.addEdge('Paul', 'Betty');
+      graph.addEdge('Will', 'Paul');
+      graph.addEdge('John', 'Paul');
+
+      expect(graph.size()).toBe(5);
     });
   });
 });

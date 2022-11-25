@@ -11,6 +11,7 @@ class WeightedVertex {
 
 export default class Graph {
   #vertices = new Map();
+  #size = 0;
 
   addVertex(vertex) {
     this.#vertices.set(vertex, new Set());
@@ -28,28 +29,17 @@ export default class Graph {
     const adjacentVertices = this.#vertices.get(vertex1);
 
     adjacentVertices.add(vertex2);
+    this.#size++;
   }
 
-  printAdjanceyList() {
-    for (const [key, value] of this.#vertices) {
-      console.log(key, value);
-    }
+  contains(vertex) {
+    return this.#vertices.has(vertex);
   }
 
   isAdjacent(terminatingVertex, startingVertex) {
     const startingVertexAdjacentSet = this.#vertices.get(startingVertex);
 
     return startingVertexAdjacentSet.has(terminatingVertex);
-  }
-
-  /**
-   * isCycle
-   * -------
-   * todo: need to implement.
-   * @returns boolean
-   */
-  isCycle() {
-    return null;
   }
 
   /**
@@ -62,8 +52,40 @@ export default class Graph {
     return null;
   }
 
-  contains(vertex) {
-    return this.#vertices.has(vertex);
+  /**
+   * isCycle
+   * -------
+   * todo: need to implement.
+   * @returns boolean
+   */
+  isCycle() {
+    return null;
+  }
+
+  findShortestPaths(startingVertex) {
+    const unvistedQueue = new Queue();
+
+    for (const vertex of this.#vertices) {
+      const value = vertex[0];
+      const weight = Math.floor(Math.random() * 100);
+      const weightVertex = new WeightedVertex(value, weight);
+      unvistedQueue.enqueue(weightVertex);
+    }
+
+    startingVertex.distance = 0;
+
+    while (!unvistedQueue.isEmpty()) {
+      const currentVertex = unvistedQueue.dequeue();
+      const adjacentVertices = this.#vertices.get(currentVertex);
+    }
+
+    return null;
+  }
+
+  printAdjanceyList() {
+    for (const [key, value] of this.#vertices) {
+      console.log(key, value);
+    }
   }
 
   isConnected(startingVertex, targetVertex) {
@@ -96,23 +118,7 @@ export default class Graph {
     return false;
   }
 
-  findShortestPaths(startingVertex) {
-    const unvistedQueue = new Queue();
-
-    for (const vertex of this.#vertices) {
-      const value = vertex[0];
-      const weight = Math.floor(Math.random() * 100);
-      const weightVertex = new WeightedVertex(value, weight);
-      unvistedQueue.enqueue(weightVertex);
-    }
-
-    startingVertex.distance = 0;
-
-    while (!unvistedQueue.isEmpty()) {
-      const currentVertex = unvistedQueue.dequeue();
-      const adjacentVertices = this.#vertices.get(currentVertex);
-    }
-
-    return null;
+  size() {
+    return this.#size;
   }
 }
