@@ -1,4 +1,4 @@
-import SinglyLinkedListNode from './singly-linked-list-node.js';
+import SinglyLinkedListNode from './singly-linked-list-node';
 
 /**
  * Singly Linked List

@@ -1,4 +1,4 @@
-import {SinglyLinkedList} from '../../src/singly-linked-list';
+import {SinglyLinkedList} from '../data-structures';
 
 export default class Stack {
   #elements = new SinglyLinkedList();

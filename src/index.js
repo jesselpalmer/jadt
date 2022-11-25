@@ -1,4 +1,6 @@
+import Bag from './bag';
+import Graph from './graph';
 import Queue from './queue';
 import Stack from './stack';
 
-export {Queue, Stack};
+export {Bag, Graph, Queue, Stack};
