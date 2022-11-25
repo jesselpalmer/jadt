@@ -1,8 +1,33 @@
+import Queue from '../queue';
+
+class WeightedVertex {
+  constructor(value, weight) {
+    this.value = value;
+    this.weight = weight;
+    this.predV = 0;
+    this.distance = Infinity;
+  }
+}
+
 export default class Graph {
   #vertices = new Map();
 
-  add(vertex, edges = new Set()) {
-    this.#vertices.set(vertex, edges);
+  addVertex(vertex) {
+    this.#vertices.set(vertex, new Set());
+  }
+
+  addEdge(vertex1, vertex2) {
+    if (!this.#vertices.has(vertex1)) {
+      this.addVertex(vertex1);
+    }
+
+    if (!this.#vertices.has(vertex2)) {
+      this.addVertex(vertex2);
+    }
+
+    const adjacentVertices = this.#vertices.get(vertex1);
+
+    adjacentVertices.add(vertex2);
   }
 
   printAdjanceyList() {
@@ -37,11 +62,6 @@ export default class Graph {
     return null;
   }
 
-  addEdge(vertex1, vertex2) {
-    const adjacentVertices = this.#vertices[vertex1];
-    adjacentVertices.add(vertex2);
-  }
-
   contains(vertex) {
     return this.#vertices.has(vertex);
   }
@@ -74,5 +94,25 @@ export default class Graph {
     }
 
     return false;
+  }
+
+  findShortestPaths(startingVertex) {
+    const unvistedQueue = new Queue();
+
+    for (const vertex of this.#vertices) {
+      const value = vertex[0];
+      const weight = Math.floor(Math.random() * 100);
+      const weightVertex = new WeightedVertex(value, weight);
+      unvistedQueue.enqueue(weightVertex);
+    }
+
+    startingVertex.distance = 0;
+
+    while (!unvistedQueue.isEmpty()) {
+      const currentVertex = unvistedQueue.dequeue();
+      const adjacentVertices = this.#vertices.get(currentVertex);
+    }
+
+    return null;
   }
 }
