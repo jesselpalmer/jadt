@@ -4,6 +4,7 @@
   "description": "JavaScript Abstract Data Types",
   "main": "./lib/index.js",
   "scripts": {
+    "benchmark": " node --experimental-specifier-resolution=node ./benchmark/linked-list.benchmark.js",
     "build": "npm run clean && ./node_modules/.bin/babel ./src --out-dir ./lib",
     "build:watch": "./node_modules/.bin/babel ./src --watch --out-dir ./lib",
     "clean": "rm -rf ./lib",

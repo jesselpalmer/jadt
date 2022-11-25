@@ -1,6 +1,6 @@
 import {performance} from 'perf_hooks';
 
-import {SinglyLinkedList} from '../src/singly-linked-list/index.js';
+import {SinglyLinkedList} from '../src/data-structures/index.js';
 
 function addFrontLinkedListTest() {
   const startTime = performance.now();
