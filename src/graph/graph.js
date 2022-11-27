@@ -10,19 +10,19 @@ class WeightedVertex {
 }
 
 export default class Graph {
-  #vertices = new Map();
   #size = 0;
+  #vertices = new Map();
 
   addVertex(vertex) {
     this.#vertices.set(vertex, new Set());
   }
 
   addEdge(vertex1, vertex2) {
-    if (!this.#vertices.has(vertex1)) {
+    if (!this.isVertex(vertex1)) {
       this.addVertex(vertex1);
     }
 
-    if (!this.#vertices.has(vertex2)) {
+    if (!this.isVertex(vertex2)) {
       this.addVertex(vertex2);
     }
 
@@ -36,30 +36,36 @@ export default class Graph {
     return this.#vertices.has(vertex);
   }
 
-  isAdjacent(terminatingVertex, startingVertex) {
-    const startingVertexAdjacentSet = this.#vertices.get(startingVertex);
+  doesPathExist(startingVertex, targetVertex) {
+    if (!this.isVertex(startingVertex, targetVertex)) return false;
 
-    return startingVertexAdjacentSet.has(terminatingVertex);
-  }
+    const frontierQueue = new Queue();
+    const discoveredSet = new Set();
 
-  /**
-   * isAcycle
-   * -------
-   * todo: need to implement.
-   * @returns boolean
-   */
-   isAcycle() {
-    return null;
-  }
+    frontierQueue.enqueue(startingVertex);
+    discoveredSet.add(startingVertex);
 
-  /**
-   * isCycle
-   * -------
-   * todo: need to implement.
-   * @returns boolean
-   */
-  isCycle() {
-    return null;
+    while (!frontierQueue.isEmpty()) {
+      const currentVertex = frontierQueue.dequeue();
+      const isVertexFound = currentVertex === targetVertex;
+
+      if (isVertexFound) {
+        return true;
+      }
+
+      const adjacentVertices = this.#vertices.get(currentVertex);
+
+      adjacentVertices.forEach((adjacentVertex) => {
+        const hasVertexBeenDiscovered = discoveredSet.has(adjacentVertex);
+
+        if (!hasVertexBeenDiscovered) {
+          frontierQueue.enqueue(adjacentVertex);
+          discoveredSet.add(adjacentVertex);
+        }
+      });
+    }
+
+    return false;
   }
 
   findShortestPaths(startingVertex) {
@@ -82,40 +88,20 @@ export default class Graph {
     return null;
   }
 
+  isAdjacent(terminatingVertex, startingVertex) {
+    const startingVertexAdjacentSet = this.#vertices.get(startingVertex);
+
+    return startingVertexAdjacentSet.has(terminatingVertex);
+  }
+
+  isVertex(...vertices) {
+    return vertices.every((vertex) => this.#vertices.has(vertex));
+  }
+
   printAdjanceyList() {
     for (const [key, value] of this.#vertices) {
       console.log(key, value);
     }
-  }
-
-  isConnected(startingVertex, targetVertex) {
-    const frontierQueue = [startingVertex];
-    const discoveredSet = new Set();
-
-    discoveredSet.add(startingVertex);
-
-    while (frontierQueue) {
-      const currentVertex = frontierQueue.shift();
-      const isVertexFound = currentVertex.value === targetVertex.value;
-
-      if (isVertexFound) {
-        return true;
-      }
-
-      console.log(this.#vertices);
-      const adjacentVertices = this.#vertices.get(startingVertex);
-
-      adjacentVertices.forEach((adjacentVertex) => {
-        const hasVertexBeenDiscovered = discoveredSet.contains(adjacentVertex);
-
-        if (!hasVertexBeenDiscovered) {
-          frontierQueue.push(adjacentVertex);
-          discoveredSet.add(adjacentVertex);
-        }
-      });
-    }
-
-    return false;
   }
 
   size() {

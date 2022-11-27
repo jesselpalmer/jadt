@@ -48,6 +48,42 @@ describe('Graph tests', () => {
     });
   });
 
+  describe('doesPathExist tests', () => {
+    test('should be true if a path exists between two vertices', () => {
+      const graph = new Graph();
+
+      graph.addVertex('SFO');
+      graph.addVertex('SEA');
+      graph.addVertex('OAK');
+      graph.addVertex('SJC');
+      graph.addVertex('LAX');
+      graph.addVertex('KOA');
+
+      graph.addEdge('SFO', 'LAX');
+      graph.addEdge('SJC', 'LAX');
+      graph.addEdge('OAK', 'LAX');
+      graph.addEdge('SEA', 'LAX');
+      graph.addEdge('SFO', 'SEA');
+      graph.addEdge('LAX', 'KOA');
+      graph.addEdge('LAX', 'SFO');
+      graph.addEdge('LAX', 'SJC');
+      graph.addEdge('LAX', 'SEA');
+      graph.addEdge('KOA', 'LAX');
+
+      expect(graph.doesPathExist('SFO', 'KOA')).toBe(true);
+    });
+
+    test('should be false if graph does not exist between two vertices', () => {
+      const graph = new Graph();
+      const adjacentVertices = new Set(['OAK', 'SJC']);
+
+      graph.addVertex('SFO', adjacentVertices);
+      graph.addVertex('CHI');
+
+      expect(graph.doesPathExist('DAL', 'CHI')).toBe(false);
+    });
+  });
+
   describe('size tests', () => {
     test('should return the correct size', () => {
       const graph = new Graph();
