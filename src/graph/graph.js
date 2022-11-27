@@ -10,7 +10,7 @@ class WeightedVertex {
 }
 
 export default class Graph {
-  #size = 0;
+  #edgeNum = 0;
   #vertices = new Map();
 
   addVertex(vertex) {
@@ -29,7 +29,7 @@ export default class Graph {
     const adjacentVertices = this.#vertices.get(vertex1);
 
     adjacentVertices.add(vertex2);
-    this.#size++;
+    this.edgeNum++;
   }
 
   contains(vertex) {
@@ -68,6 +68,10 @@ export default class Graph {
     return false;
   }
 
+  edgeCount() {
+    return this.#edgeNum;
+  }
+
   findShortestPaths(startingVertex) {
     const unvistedQueue = new Queue();
 
@@ -94,6 +98,10 @@ export default class Graph {
     return startingVertexAdjacentSet.has(terminatingVertex);
   }
 
+  isEmpty() {
+    return this.edgeCount() === 0 && this.vertexCount() === 0;
+  }
+
   isVertex(...vertices) {
     return vertices.every((vertex) => this.#vertices.has(vertex));
   }
@@ -105,6 +113,10 @@ export default class Graph {
   }
 
   size() {
-    return this.#size;
+    return this.vertexCount();
+  }
+
+  vertexCount() {
+    return this.#vertices.size;
   }
 }

@@ -84,6 +84,51 @@ describe('Graph tests', () => {
     });
   });
 
+  describe('isEmpty tests', () => {
+    test('should be true after graph is created', () => {
+      const graph = new Graph();
+
+      expect(graph.isEmpty()).toBe(true);
+    });
+
+    test('should be false if graph has vertices', () => {
+      const graph = new Graph();
+
+      graph.addVertex('John');
+      graph.addVertex('Betty');
+      graph.addVertex('Paul');
+
+      expect(graph.isEmpty()).toBe(false);
+    });
+
+    test('should be false if graph has edges', () => {
+      const graph = new Graph();
+
+      graph.addEdge('Will', 'Betty');
+      graph.addEdge('Cindy', 'Betty');
+      graph.addEdge('Paul', 'Betty');
+      graph.addEdge('Will', 'Paul');
+      graph.addEdge('John', 'Paul');
+
+      expect(graph.isEmpty()).toBe(false);
+    });
+
+    test('should be false if graph has edges and edges', () => {
+      const graph = new Graph();
+
+      graph.addVertex('John');
+      graph.addVertex('Betty');
+      graph.addVertex('Paul');
+      graph.addEdge('Will', 'Betty');
+      graph.addEdge('Cindy', 'Betty');
+      graph.addEdge('Paul', 'Betty');
+      graph.addEdge('Will', 'Paul');
+      graph.addEdge('John', 'Paul');
+
+      expect(graph.isEmpty()).toBe(false);
+    });
+  });
+
   describe('size tests', () => {
     test('should return the correct size', () => {
       const graph = new Graph();
