@@ -68,6 +68,10 @@ export default class Graph {
     return false;
   }
 
+  /**
+    * Returns the number of edges
+    * @return {number} number of edges
+    */
   edgeCount() {
     return this.#edgeNum;
   }
