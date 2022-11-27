@@ -11,10 +11,10 @@ class WeightedVertex {
 
 export default class Graph {
   #edgeNum = 0;
-  #vertices = new Map();
+  #adjacencyList = new Map();
 
   addVertex(vertex) {
-    this.#vertices.set(vertex, new Set());
+    this.#adjacencyList.set(vertex, new Set());
   }
 
   addEdge(vertex1, vertex2) {
@@ -26,14 +26,14 @@ export default class Graph {
       this.addVertex(vertex2);
     }
 
-    const adjacentVertices = this.#vertices.get(vertex1);
+    const adjacentVertices = this.#adjacencyList.get(vertex1);
 
     adjacentVertices.add(vertex2);
     this.edgeNum++;
   }
 
   contains(vertex) {
-    return this.#vertices.has(vertex);
+    return this.#adjacencyList.has(vertex);
   }
 
   doesPathExist(startingVertex, targetVertex) {
@@ -53,7 +53,7 @@ export default class Graph {
         return true;
       }
 
-      const adjacentVertices = this.#vertices.get(currentVertex);
+      const adjacentVertices = this.#adjacencyList.get(currentVertex);
 
       adjacentVertices.forEach((adjacentVertex) => {
         const hasVertexBeenDiscovered = discoveredSet.has(adjacentVertex);
@@ -79,7 +79,7 @@ export default class Graph {
   findShortestPaths(startingVertex) {
     const unvistedQueue = new Queue();
 
-    for (const vertex of this.#vertices) {
+    for (const vertex of this.#adjacencyList) {
       const value = vertex[0];
       const weight = Math.floor(Math.random() * 100);
       const weightVertex = new WeightedVertex(value, weight);
@@ -90,14 +90,14 @@ export default class Graph {
 
     while (!unvistedQueue.isEmpty()) {
       const currentVertex = unvistedQueue.dequeue();
-      const adjacentVertices = this.#vertices.get(currentVertex);
+      const adjacentVertices = this.#adjacencyList.get(currentVertex);
     }
 
     return null;
   }
 
   isAdjacent(terminatingVertex, startingVertex) {
-    const startingVertexAdjacentSet = this.#vertices.get(startingVertex);
+    const startingVertexAdjacentSet = this.#adjacencyList.get(startingVertex);
 
     return startingVertexAdjacentSet.has(terminatingVertex);
   }
@@ -107,11 +107,11 @@ export default class Graph {
   }
 
   isVertex(...vertices) {
-    return vertices.every((vertex) => this.#vertices.has(vertex));
+    return vertices.every((vertex) => this.#adjacencyList.has(vertex));
   }
 
   printAdjanceyList() {
-    for (const [key, value] of this.#vertices) {
+    for (const [key, value] of this.#adjacencyList) {
       console.log(key, value);
     }
   }
@@ -121,6 +121,6 @@ export default class Graph {
   }
 
   vertexCount() {
-    return this.#vertices.size;
+    return this.#adjacencyList.size;
   }
 }
