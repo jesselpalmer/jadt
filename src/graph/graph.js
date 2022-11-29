@@ -47,9 +47,9 @@ export default class Graph {
 
     while (!frontierQueue.isEmpty()) {
       const currentVertex = frontierQueue.dequeue();
-      const isVertexFound = currentVertex === targetVertex;
+      const isPathFound = currentVertex === targetVertex;
 
-      if (isVertexFound) {
+      if (isPathFound) {
         return true;
       }
 
