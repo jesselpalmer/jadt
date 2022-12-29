@@ -28,18 +28,18 @@ describe('Queue tests', () => {
   });
 
   describe('dequeue() tests', () => {
-    test('should add values to the queue', () => {
+    test('should remove a value from the front of the queue', () => {
       const queue = new Queue();
       queue.enqueue('wheatley');
       queue.enqueue('glados');
       queue.enqueue('cave johnson');
-      expect(queue.dequeue()).toBe('cave johnson');
+      expect(queue.dequeue()).toBe('wheatley');
       expect(queue.size()).toBe(2);
     });
   });
 
   describe('enqueue() tests', () => {
-    test('should add values to the queue', () => {
+    test('should add a value to the back of the queue', () => {
       const queue = new Queue();
       queue.enqueue('wheatley');
       queue.enqueue('glados');
