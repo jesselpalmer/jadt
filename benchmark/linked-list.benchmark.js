@@ -2,11 +2,11 @@ import {performance} from 'perf_hooks';
 
 import {SinglyLinkedList} from '../src/data-structures/index.js';
 
-function addFrontLinkedListTest() {
+function addFrontLinkedListTest(numElements) {
   const startTime = performance.now();
   const list = new SinglyLinkedList();
 
-  for (let i = 0; i < 100000; i++) {
+  for (let i = 0; i < numElements; i++) {
     list.addToFront(i);
   }
 
@@ -17,11 +17,11 @@ function addFrontLinkedListTest() {
       `using addToFront() in ${elapsedTime} ms`);
 }
 
-function pushArrayTest() {
+function pushArrayTest(numElements) {
   const startTime = performance.now();
   const array = [];
 
-  for (let i = 0; i < 100000; i++) {
+  for (let i = 0; i < numElements; i++) {
     array.unshift(i);
   }
 
@@ -32,9 +32,59 @@ function pushArrayTest() {
       `using unshift() in ${elapsedTime} ms`);
 }
 
+function removeFrontLinkedListTest(numElements) {
+  const list = new SinglyLinkedList();
+
+  for (let i = 0; i < numElements; i++) {
+    list.addToFront(i);
+  }
+
+  const startTime = performance.now();
+
+  while (!list.isEmpty()) {
+    list.removeFirst();
+  }
+
+  const endTime = performance.now();
+  const elapsedTime = endTime - startTime;
+
+  console.log(`${numElements} elements removed from the front of the` +
+      ` linkedlist using addToFront() in ${elapsedTime} ms`);
+}
+
+function removeArrayTest(numElements) {
+  const array = [];
+
+  for (let i = 0; i < numElements; i++) {
+    array.push(i);
+  }
+
+  const startTime = performance.now();
+
+  for (let i = 0; i < numElements; i++) {
+    array.shift(i);
+  }
+
+  const endTime = performance.now();
+  const elapsedTime = endTime - startTime;
+
+  console.log(`${numElements} elements removed from the front of the array ` +
+      `using shift() in ${elapsedTime} ms`);
+}
+
 function addToFrontTests() {
-  addFrontLinkedListTest();
-  pushArrayTest();
+  const numElements = 50000;
+
+  addFrontLinkedListTest(numElements);
+  pushArrayTest(numElements);
+}
+
+function removeFromFrontTests() {
+  const numElements = 50000;
+
+  removeFrontLinkedListTest(numElements);
+  removeArrayTest(numElements);
 }
 
 addToFrontTests();
+removeFromFrontTests();

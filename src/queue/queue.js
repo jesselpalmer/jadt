@@ -1,36 +1,33 @@
+import {SinglyLinkedList} from '../data-structures';
+
 export default class Queue {
-  constructor(elements = []) {
-    this._elements = elements;
-  }
+  #elements = new SinglyLinkedList();
 
   back() {
-    if (this.isEmpty()) return null;
-    const lastElementIndex = this._elements.length - 1;
-    return this._elements[lastElementIndex];
+    return this.#elements.getLast();
   }
 
   clear() {
-    this._elements = [];
+    this.#elements.clear();
   }
 
   dequeue() {
-    return this._elements.pop();
+    return this.#elements.removeFirst();
   }
 
   enqueue(element) {
-    this._elements.push(element);
+    this.#elements.addToEnd(element);
   }
 
   isEmpty() {
-    return this._elements.length === 0;
+    return this.#elements.isEmpty();
   }
 
   peek() {
-    if (this.isEmpty()) return null;
-    return this._elements[0];
+    return this.#elements.getFirst();
   }
 
   size() {
-    return this._elements.length;
+    return this.#elements.size();
   }
 }
