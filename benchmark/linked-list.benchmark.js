@@ -2,44 +2,43 @@ import {performance} from 'perf_hooks';
 
 import {SinglyLinkedList} from '../src/data-structures/index.js';
 
-const numTestElements = 100000;
-
-function addFrontLinkedListTest() {
+function addFrontLinkedListTest(numElements) {
   const startTime = performance.now();
   const list = new SinglyLinkedList();
 
-  for (let i = 0; i < numTestElements; i++) {
+  for (let i = 0; i < numElements; i++) {
     list.addToFront(i);
   }
 
   const endTime = performance.now();
   const elapsedTime = endTime - startTime;
 
-  console.log(`    ${numTestElements} elements added to the front of the ` +
-      `linkedlist using addToFront() in ${elapsedTime} ms`);
+  console.log(`${list.size()} elements added to the front of the linkedlist ` +
+      `using addToFront() in ${elapsedTime} ms`);
 }
 
-function pushArrayTest() {
+function pushArrayTest(numElements) {
   const startTime = performance.now();
   const array = [];
 
-  for (let i = 0; i < numTestElements; i++) {
+  for (let i = 0; i < numElements; i++) {
     array.unshift(i);
   }
 
   const endTime = performance.now();
   const elapsedTime = endTime - startTime;
 
-  console.log(`    ${numTestElements} elements added to the front of the ` +
-      `array using unshift() in ${elapsedTime} ms`);
+  console.log(`${array.length} elements added to the front of the array ` +
+      `using unshift() in ${elapsedTime} ms`);
 }
 
-function dequeueElementTest() {
+function removeFrontLinkedListTest(numElements) {
   const list = new SinglyLinkedList();
 
-  for (let i = 0; i < numTestElements; i++) {
+  for (let i = 0; i < numElements; i++) {
     list.addToFront(i);
   }
+
   const startTime = performance.now();
 
   while (!list.isEmpty()) {
@@ -49,40 +48,43 @@ function dequeueElementTest() {
   const endTime = performance.now();
   const elapsedTime = endTime - startTime;
 
-  console.log(`    ${numTestElements} elements removed from the front of the ` +
-    `linkedlist using removeFirst() in ${elapsedTime} ms`);
+  console.log(`${numElements} elements removed from the front of the` +
+      ` linkedlist using addToFront() in ${elapsedTime} ms`);
 }
 
-function removeElementArrayTest() {
+function removeArrayTest(numElements) {
   const array = [];
 
-  for (let i = 0; i < numTestElements; i++) {
+  for (let i = 0; i < numElements; i++) {
     array.push(i);
   }
 
   const startTime = performance.now();
 
-  while (array.length) {
-    array.shift();
+  for (let i = 0; i < numElements; i++) {
+    array.shift(i);
   }
 
   const endTime = performance.now();
   const elapsedTime = endTime - startTime;
 
-  console.log(`    ${numTestElements} elements removed from the front of the ` +
-      `array using shift() in ${elapsedTime} ms`);
+  console.log(`${numElements} elements removed from the front of the array ` +
+      `using shift() in ${elapsedTime} ms`);
 }
 
 function addToFrontTests() {
-  console.log('Executing benchmark tests...');
-  console.log('  Add elements to the front tests: ');
-  addFrontLinkedListTest();
-  pushArrayTest();
+  const numElements = 50000;
 
-  console.log('\n');
-  console.log('  Removing elements from the front tests: ');
-  dequeueElementTest();
-  removeElementArrayTest();
+  addFrontLinkedListTest(numElements);
+  pushArrayTest(numElements);
+}
+
+function removeFromFrontTests() {
+  const numElements = 50000;
+
+  removeFrontLinkedListTest(numElements);
+  removeArrayTest(numElements);
 }
 
 addToFrontTests();
+removeFromFrontTests();
