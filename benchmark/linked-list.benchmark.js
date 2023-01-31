@@ -49,7 +49,7 @@ function removeFrontLinkedListTest(numElements) {
   const elapsedTime = endTime - startTime;
 
   console.log(`${numElements} elements removed from the front of the` +
-      ` linkedlist using addToFront() in ${elapsedTime} ms`);
+      ` linkedlist using removeFirst() in ${elapsedTime} ms`);
 }
 
 function removeArrayTest(numElements) {
