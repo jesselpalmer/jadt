@@ -13,8 +13,8 @@ function addFrontLinkedListTest(numElements) {
   const endTime = performance.now();
   const elapsedTime = endTime - startTime;
 
-  console.log(`${list.size()} elements added to the front of the linkedlist ` +
-      `using addToFront() in ${elapsedTime} ms`);
+  console.log(`    ${list.size()} elements added to the front of the ` +
+      `linkedlist using addToFront() in ${elapsedTime} ms`);
 }
 
 function pushArrayTest(numElements) {
@@ -28,7 +28,7 @@ function pushArrayTest(numElements) {
   const endTime = performance.now();
   const elapsedTime = endTime - startTime;
 
-  console.log(`${array.length} elements added to the front of the array ` +
+  console.log(`    ${array.length} elements added to the front of the array ` +
       `using unshift() in ${elapsedTime} ms`);
 }
 
@@ -48,8 +48,8 @@ function removeFrontLinkedListTest(numElements) {
   const endTime = performance.now();
   const elapsedTime = endTime - startTime;
 
-  console.log(`${numElements} elements removed from the front of the` +
-      ` linkedlist using removeFirst() in ${elapsedTime} ms`);
+  console.log(`    ${numElements} elements removed from the front of the ` +
+      `linkedlist using removeFirst() in ${elapsedTime} ms`);
 }
 
 function removeArrayTest(numElements) {
@@ -68,19 +68,28 @@ function removeArrayTest(numElements) {
   const endTime = performance.now();
   const elapsedTime = endTime - startTime;
 
-  console.log(`${numElements} elements removed from the front of the array ` +
-      `using shift() in ${elapsedTime} ms`);
+  console.log(`    ${numElements} elements removed from the front of the ` +
+      `array using shift() in ${elapsedTime} ms`);
 }
 
+const NUM_TEST_ELEMENTS = 100000;
+
 function addToFrontTests() {
-  const numElements = 50000;
+  const numElements = NUM_TEST_ELEMENTS;
+
+  console.log('\n');
+  console.log('Executing benchmark tests...');
+  console.log('  Add elements to the front tests: ');
 
   addFrontLinkedListTest(numElements);
   pushArrayTest(numElements);
 }
 
 function removeFromFrontTests() {
-  const numElements = 50000;
+  const numElements = NUM_TEST_ELEMENTS;
+
+  console.log('\n');
+  console.log('  Removing elements from the front tests: ');
 
   removeFrontLinkedListTest(numElements);
   removeArrayTest(numElements);
